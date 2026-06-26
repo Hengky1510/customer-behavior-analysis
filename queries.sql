@@ -1,62 +1,89 @@
-select
-  user_id,
-  count(distinct(order_id)) as total_orders
-from
-  `bigquery-public-data.thelook_ecommerce.order_items`
-where
-  status = "Complete"
-group by user_id
-order by total_orders desc
-limit 10;
+-- Question 1
+-- Who has the highest number of completed orders?
 
-select
+SELECT
   user_id,
-  sum(sale_price) as total_spending
-from `bigquery-public-data.thelook_ecommerce.order_items`
-where status = "Complete"
-group by user_id
-order by total_spending desc
-limit 10;
+  COUNT(DISTINCT order_id) AS total_orders
+FROM `bigquery-public-data.thelook_ecommerce.order_items`
+WHERE status = "Complete"
+GROUP BY user_id
+ORDER BY total_orders DESC
+LIMIT 10;
 
-with total_order as (
-  select
+
+-- Question 2
+-- Who spends the most?
+
+SELECT
+  user_id,
+  SUM(sale_price) AS total_spending
+FROM `bigquery-public-data.thelook_ecommerce.order_items`
+WHERE status = "Complete"
+GROUP BY user_id
+ORDER BY total_spending DESC
+LIMIT 10;
+
+
+-- Question 3
+-- What is the average number of orders per customer?
+
+WITH total_order AS (
+  SELECT
     user_id,
-    count(distinct(order_id)) as total_orders
-  from `bigquery-public-data.thelook_ecommerce.order_items`
-  where status = "Complete"
-  group by user_id
+    COUNT(DISTINCT order_id) AS total_orders
+  FROM `bigquery-public-data.thelook_ecommerce.order_items`
+  WHERE status = "Complete"
+  GROUP BY user_id
 )
 
-select
-  avg(total_orders) as average_orders
-from total_order;
+SELECT
+  AVG(total_orders) AS average_orders
+FROM total_order;
 
-select 
+
+-- Question 4
+-- Which state has the highest number of customers?
+
+SELECT
   u.state,
-  count(distinct(o.user_id)) as total_customer
-from `bigquery-public-data.thelook_ecommerce.users` u
-join bigquery-public-data.thelook_ecommerce.order_items o on o.user_id = u.id
-group by u.state
-order by total_customer desc;
+  COUNT(DISTINCT o.user_id) AS total_customer
+FROM `bigquery-public-data.thelook_ecommerce.users` u
+JOIN `bigquery-public-data.thelook_ecommerce.order_items` o
+  ON o.user_id = u.id
+GROUP BY u.state
+ORDER BY total_customer DESC;
 
-select
-  avg(age) as average_age
-from `bigquery-public-data.thelook_ecommerce.users`;
 
-select 
-  u.gender as gender,
-  sum(o.sale_price) as total_spending
-from `bigquery-public-data.thelook_ecommerce.users` u
-join bigquery-public-data.thelook_ecommerce.order_items o ON o.user_id = u.id
-where o.status = "Complete"
-group by gender
-order by total_spending desc;
+-- Question 5
+-- What is the average customer age?
 
-select
-  FORMAT_TIMESTAMP('%Y-%m', created_at) as year_month,
-  sum(sale_price) as revenue
-from
-  `bigquery-public-data.thelook_ecommerce.order_items`
-where status = "Complete"
-group by year_month
-order by revenue DESC Limit 1;
+SELECT
+  AVG(age) AS average_age
+FROM `bigquery-public-data.thelook_ecommerce.users`;
+
+
+-- Question 6
+-- Spending comparison by gender
+
+SELECT
+  u.gender AS gender,
+  SUM(o.sale_price) AS total_spending
+FROM `bigquery-public-data.thelook_ecommerce.users` u
+JOIN `bigquery-public-data.thelook_ecommerce.order_items` o
+  ON o.user_id = u.id
+WHERE o.status = "Complete"
+GROUP BY u.gender
+ORDER BY total_spending DESC;
+
+
+-- Question 7
+-- Which month generated the highest revenue?
+
+SELECT
+  FORMAT_TIMESTAMP('%Y-%m', created_at) AS year_month,
+  SUM(sale_price) AS revenue
+FROM `bigquery-public-data.thelook_ecommerce.order_items`
+WHERE status = "Complete"
+GROUP BY year_month
+ORDER BY revenue DESC
+LIMIT 1;
