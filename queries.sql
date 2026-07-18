@@ -16,7 +16,7 @@ LIMIT 10;
 
 SELECT
   user_id,
-  SUM(sale_price) AS total_spending
+  ROUND(SUM(sale_price),2) AS total_spending
 FROM `bigquery-public-data.thelook_ecommerce.order_items`
 WHERE status = "Complete"
 GROUP BY user_id
@@ -37,12 +37,28 @@ WITH total_order AS (
 )
 
 SELECT
-  AVG(total_orders) AS average_orders
+  ROUND(AVG(total_orders),2) AS average_orders
 FROM total_order;
 
 
 -- Question 4
--- Which state has the highest number of customers?
+-- Average Spending per Customer?
+
+WITH customer_spending AS (
+  SELECT
+    user_id,
+    SUM(sale_price) AS total_spending
+  FROM `bigquery-public-data.thelook_ecommerce.order_items`
+  WHERE status = 'Complete'
+  GROUP BY user_id
+)
+
+SELECT
+  ROUND(AVG(total_spending), 2) AS average_spending_per_customer
+FROM customer_spending;
+
+-- Question 5
+-- Top 10 States by Actives Customer?
 
 SELECT
   u.state,
@@ -51,15 +67,8 @@ FROM `bigquery-public-data.thelook_ecommerce.users` u
 JOIN `bigquery-public-data.thelook_ecommerce.order_items` o
   ON o.user_id = u.id
 GROUP BY u.state
-ORDER BY total_customer DESC;
-
-
--- Question 5
--- What is the average customer age?
-
-SELECT
-  AVG(age) AS average_age
-FROM `bigquery-public-data.thelook_ecommerce.users`;
+ORDER BY total_customer DESC
+LIMIT 10;
 
 
 -- Question 6
@@ -67,7 +76,7 @@ FROM `bigquery-public-data.thelook_ecommerce.users`;
 
 SELECT
   u.gender AS gender,
-  SUM(o.sale_price) AS total_spending
+  ROUND(SUM(o.sale_price),2) AS total_spending
 FROM `bigquery-public-data.thelook_ecommerce.users` u
 JOIN `bigquery-public-data.thelook_ecommerce.order_items` o
   ON o.user_id = u.id
@@ -81,7 +90,7 @@ ORDER BY total_spending DESC;
 
 SELECT
   FORMAT_TIMESTAMP('%Y-%m', created_at) AS year_month,
-  SUM(sale_price) AS revenue
+  ROUND(SUM(sale_price),2) AS revenue
 FROM `bigquery-public-data.thelook_ecommerce.order_items`
 WHERE status = "Complete"
 GROUP BY year_month
