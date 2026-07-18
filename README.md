@@ -4,7 +4,7 @@
 
 This project analyzes customer purchasing behavior using the TheLook Ecommerce dataset available in Google BigQuery Public Datasets.
 
-The objective is to answer business-related questions regarding customer activity, spending patterns, demographics, and revenue trends using SQL.
+The objective is to answer business-related questions regarding customer activity, spending patterns, demographics, and revenue performance using SQL.
 
 ---
 
@@ -44,21 +44,21 @@ Calculate total spending by customer.
 
 Measure overall customer purchasing activity.
 
-### 4. Which state has the highest number of customers?
+### 4. What is the average spending per customer?
 
-Analyze customer distribution across states.
+Calculate the average amount spent by each customer.
 
-### 5. What is the average customer age?
+### 5. Which states have the most active customers?
 
-Calculate the average age of registered customers.
+Identify states with the highest number of customers who have completed at least one order.
 
 ### 6. Is there a difference in spending between male and female customers?
 
-Compare customer spending by gender.
+Compare total spending by gender.
 
 ### 7. Which month generated the highest revenue?
 
-Analyze monthly revenue performance and identify the top-performing month.
+Analyze revenue performance and identify the top-performing month.
 
 ---
 
@@ -82,9 +82,9 @@ Analyze monthly revenue performance and identify the top-performing month.
 * Identified customers with the highest number of completed orders.
 * Identified top-spending customers.
 * Calculated average orders per customer.
-* Determined the state with the highest customer count.
-* Calculated average customer age.
-* Compared spending between genders.
+* Calculated average spending per customer.
+* Identified states with the highest number of active customers.
+* Compared spending between male and female customers.
 * Identified the month with the highest revenue generation.
 
 ---
