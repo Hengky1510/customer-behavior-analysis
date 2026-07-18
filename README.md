@@ -67,19 +67,19 @@ Analyze revenue performance and identify the top-performing month.
 
 ### 1. Top Customers by Orders
 
-![Top Customers by Orders](screenshots/01_top_customers_by_orders)
+![Top Customers by Orders](screenshots/01_top_customers_by_orders.png)
 
 ---
 
 ### 2. Top Customers by Spending
 
-![Top Customers by Spending](screenshots/02_top_customers_by_spending)
+![Top Customers by Spending](screenshots/02_top_customers_by_spending.png)
 
 ---
 
 ### 3. Average Orders per Customer
 
-![Average Orders per Customer](screenshots/03_average_orders_per_customer)
+![Average Orders per Customer](screenshots/03_average_orders_per_customer.png)
 
 ---
 
