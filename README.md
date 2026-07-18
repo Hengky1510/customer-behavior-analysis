@@ -67,7 +67,7 @@ Analyze revenue performance and identify the top-performing month.
 
 ### 1. Top Customers by Orders
 
-![Top Customers by Orders](screenshots/01_top_customers_by_orders.png)
+![Top Customers by Orders](screenshots/01_top_customers_by_order.png)
 
 ---
 
