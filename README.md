@@ -13,6 +13,7 @@ The objective is to answer business-related questions regarding customer activit
 **Source:** Google BigQuery Public Dataset
 
 **Dataset Name:**
+
 `bigquery-public-data.thelook_ecommerce`
 
 **Tables Used:**
@@ -62,6 +63,50 @@ Analyze revenue performance and identify the top-performing month.
 
 ---
 
+## Query Results
+
+### 1. Top Customers by Orders
+
+![Top Customers by Orders](screenshots/01_top_customers_by_orders.png)
+
+---
+
+### 2. Top Customers by Spending
+
+![Top Customers by Spending](screenshots/02_top_customers_by_spending.png)
+
+---
+
+### 3. Average Orders per Customer
+
+![Average Orders per Customer](screenshots/03_average_orders_per_customer.png)
+
+---
+
+### 4. Average Spending per Customer
+
+![Average Spending per Customer](screenshots/04_average_spending_per_customer.png)
+
+---
+
+### 5. Top 10 States by Active Customers
+
+![Top 10 States by Active Customers](screenshots/05_top_10_states_by_active_customers.png)
+
+---
+
+### 6. Total Spending by Gender
+
+![Total Spending by Gender](screenshots/06_total_spending_by_gender.png)
+
+---
+
+### 7. Highest Revenue Month
+
+![Highest Revenue Month](screenshots/07_highest_revenue_month.png)
+
+---
+
 ## SQL Skills Demonstrated
 
 * COUNT()
@@ -91,13 +136,20 @@ Analyze revenue performance and identify the top-performing month.
 
 ## Project Structure
 
+```text
 customer-behavior-analysis/
-
+│
 ├── README.md
-
 ├── queries.sql
-
 └── screenshots/
+    ├── 01_top_customers_by_orders.png
+    ├── 02_top_customers_by_spending.png
+    ├── 03_average_orders_per_customer.png
+    ├── 04_average_spending_per_customer.png
+    ├── 05_top_10_states_by_active_customers.png
+    ├── 06_total_spending_by_gender.png
+    └── 07_highest_revenue_month.png
+```
 
 ---
 
